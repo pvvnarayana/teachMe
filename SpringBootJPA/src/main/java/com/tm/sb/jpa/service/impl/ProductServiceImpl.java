@@ -37,14 +37,17 @@ public class ProductServiceImpl implements ProductService{
 		return productRepo.findById(id).get();
 	}
 
-	@Override
-	public void deleteProductById(long id) {
-		productRepo.deleteById(id);
-	}
+	
 
 	@Override
 	public Product findByCode(long code) {
 		return entityManager.createQuery("select p from Product p where p.code="+code, Product.class ).getSingleResult();
+	}
+
+	@Override
+	public void deleteProductById(long id) {
+			productRepo.deleteById(id);
+		
 	}
 
 }
